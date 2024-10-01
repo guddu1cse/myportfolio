@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.jsx
+import React from 'react';
+import Header from './Components/Header';
+import About from './Components/About';
+import Skills from './Components/Skills';
+import Projects from './Components/Projects';
+import Contact from './Components/Contacts';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="bg-gradient-to-r from-black to-gray-800 text-white min-h-screen overflow-auto">
+      <Header />
+      <main className="pt-14 ">
+        <section className=" m-0 p-4"> {/* Added padding, removed margin */}
+          <About />
+        </section>
+        <section className=" m-0 p-4"> {/* Added padding, removed margin */}
+          <Contact />
+        </section>
+        <section className=" m-0 p-4"> {/* Added padding, removed margin */}
+          <Skills />
+        </section>
+        <section className=" m-0 p-4"> {/* Added padding, removed margin */}
+          <Projects />
+        </section>
+      </main>
     </div>
   );
 }

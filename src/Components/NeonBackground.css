@@ -1,0 +1,43 @@
+/* NeonBackground.css */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+.neon-background {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-family: "Arial", sans-serif;
+  text-align: center;
+  animation: backgroundAnimation 5s infinite alternate;
+}
+
+@keyframes backgroundAnimation {
+  0% {
+    background-color: #ff0080;
+    box-shadow: 0 0 20px #ff0080, 0 0 40px #ff0080, 0 0 60px #ff0080;
+  }
+  25% {
+    background-color: #00ff8f;
+    box-shadow: 0 0 20px #00ff8f, 0 0 40px #00ff8f, 0 0 60px #00ff8f;
+  }
+  50% {
+    background-color: #0080ff;
+    box-shadow: 0 0 20px #0080ff, 0 0 40px #0080ff, 0 0 60px #0080ff;
+  }
+  75% {
+    background-color: #ff8f00;
+    box-shadow: 0 0 20px #ff8f00, 0 0 40px #ff8f00, 0 0 60px #ff8f00;
+  }
+  100% {
+    background-color: #ff0000;
+    box-shadow: 0 0 20px #ff0000, 0 0 40px #ff0000, 0 0 60px #ff0000;
+  }
+}
