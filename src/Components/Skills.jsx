@@ -13,6 +13,11 @@ import {
   SiJavascript,
   SiMysql,
   SiJest,
+  SiSqlite,
+  SiHibernate,
+  SiSpringsecurity,
+  SiJunit5,
+  SiThymeleaf,
 } from "react-icons/si";
 
 // Skills data array with icons
@@ -26,8 +31,13 @@ const skills = [
   { name: "CSS", icon: <FaCss3Alt /> },
   { name: "Tailwind CSS", icon: <SiTailwindcss /> },
   { name: "MySQL", icon: <SiMysql /> },
+  { name: "SQL", icon: <SiSqlite /> },
   { name: "AWS", icon: <FaAws /> },
   { name: "Git", icon: <FaGitAlt /> },
+  { name: "Hibernate", icon: <SiHibernate /> },
+  { name: "JUnit5", icon: <SiJunit5 /> },
+  { name: "Thymeleaf", icon: <SiThymeleaf /> },
+  { name: "Spring Security", icon: <SiSpringsecurity /> },
 ];
 
 const Skills = () => {
