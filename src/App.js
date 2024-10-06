@@ -6,6 +6,7 @@ import Skills from './Components/Skills';
 import Projects from './Components/Projects';
 import Contact from './Components/Contacts';
 import Tools from './Components/Tools';
+import Certifications from './Components/Certifications'
 
 function App() {
   return (
@@ -17,6 +18,9 @@ function App() {
         </section>
         <section className=" m-0 p-4"> {/* Added padding, removed margin */}
           <Contact />
+        </section>
+        <section className=" m-0 p-4"> {/* Added padding, removed margin */}
+          <Certifications />
         </section>
         <section className=" m-0 p-4"> {/* Added padding, removed margin */}
           <Skills />
