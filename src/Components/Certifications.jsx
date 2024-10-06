@@ -1,5 +1,5 @@
 import React from "react";
-import { FaJava } from "react-icons/fa"; // For Spring Boot
+import { FaJava, FaReact } from "react-icons/fa"; // For Spring Boot
 import { SiLeetcode, SiFrontendmentor } from "react-icons/si"; // For DSA and Frontend Dev
 
 const certifications = [
@@ -16,7 +16,7 @@ const certifications = [
   {
     title: "Frontend Developer Program",
     url: "https://www.edyoda.com/public-certificate/guddu1cse/1482",
-    icon: <SiFrontendmentor className="text-purple-600" />, // Frontend Mentor icon
+    icon: <FaReact className="text-purple-600" />, // Frontend Mentor icon
   },
 ];
 
