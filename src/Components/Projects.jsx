@@ -25,7 +25,7 @@ const Projects = () => {
           description: project.description || "No description available",
         }));
 
-        setProjects((prevProjects) => [...prevProjects, ...allProjects]);
+        setProjects(allProjects); // Update to prevent duplicate rendering
       } catch (err) {
         setError(err.message);
       } finally {
@@ -49,10 +49,7 @@ const Projects = () => {
   }
 
   return (
-    <section
-      id="projects"
-      className="text-white p-8 bg-gray-900 rounded-lg shadow-lg"
-    >
+    <section id="projects" className="text-white p-8 rounded-lg shadow-lg">
       <h2 className="text-4xl font-bold neon-glow mb-8 text-center">
         Projects
       </h2>
@@ -62,7 +59,7 @@ const Projects = () => {
             key={index}
             className="bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300"
           >
-            <h3 className="text-2xl font-semibold mb-2">
+            <h3 className="text-2xl font-semibold mb-2 text-center">
               <a
                 href={project.link}
                 target="_blank"

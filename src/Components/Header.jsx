@@ -7,8 +7,8 @@ import {
   FaBars,
   FaTimes,
   FaFileDownload, // Importing the download icon
-  FaCode, // Importing the LeetCode icon
 } from "react-icons/fa";
+import { SiLeetcode } from "react-icons/si"; // Importing LeetCode icon
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -52,7 +52,7 @@ const Header = () => {
           <a
             href="https://hackerrank-resume.s3.us-east-1.amazonaws.com/uploads/9758288/OTc1ODI4OA==.pdf"
             className="flex items-center hover:text-neon transition duration-300"
-            download // Allows direct download
+            download
           >
             <FaFileDownload className="mr-1" /> Resume
           </a>
@@ -62,7 +62,8 @@ const Header = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <FaCode className="mr-1" /> LeetCode
+            <SiLeetcode className="mr-1" /> LeetCode{" "}
+            {/* SiLeetcode icon used */}
           </a>
         </nav>
 
@@ -112,7 +113,7 @@ const Header = () => {
           <a
             href="https://hackerrank-resume.s3.us-east-1.amazonaws.com/uploads/9758288/OTc1ODI4OA==.pdf"
             className="flex items-center hover:text-neon transition duration-300"
-            download // Allows direct download
+            download
             onClick={toggleMenu}
           >
             <FaFileDownload className="mr-2" /> Resume
@@ -124,7 +125,8 @@ const Header = () => {
             rel="noopener noreferrer"
             onClick={toggleMenu}
           >
-            <FaCode className="mr-2" /> LeetCode
+            <SiLeetcode className="mr-2" /> LeetCode{" "}
+            {/* SiLeetcode icon used */}
           </a>
         </nav>
       )}

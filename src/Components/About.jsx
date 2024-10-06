@@ -28,7 +28,7 @@ const About = () => {
         <div className="relative transition-transform duration-300 transform hover:scale-110 flex items-center justify-center">
           <div className="absolute w-48 h-48 rounded-full  animate-spin-slow"></div>
           <img
-            src={profileImage}
+            src="https://avatars.githubusercontent.com/u/73424882?s=400&u=51551f37d5984f47268978e989304e8093442d41&v=4"
             alt="Profile"
             className="rounded-lg w-48 h-48 object-cover shadow-xl border-2 border-sky-400"
           />
