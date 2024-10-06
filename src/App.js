@@ -6,7 +6,7 @@ import Skills from './Components/Skills';
 import Projects from './Components/Projects';
 import Contact from './Components/Contacts';
 import Tools from './Components/Tools';
-import Certifications from './Components/Certifications'
+import Certifications from './Components/Certifications';
 
 function App() {
   return (
