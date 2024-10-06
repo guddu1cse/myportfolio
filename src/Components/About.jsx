@@ -10,17 +10,20 @@ const About = () => {
     >
       <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-5xl mx-auto space-y-6 md:space-y-0 md:space-x-6">
         {/* About Text Section */}
-        <div className=" text-gray-200 p-6 rounded-lg transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl border-4 border-transparent  md:w-1/2 md:mb-0">
+        <div className=" text-gray-200 p-6 rounded-lg transform transition-transform duration-300 hover:scale-105 border-4 border-transparent  md:w-1/2 md:mb-0">
           <h2 className="text-4xl font-bold mb-4 animate-pulse text-center md:text-left">
             About Me
           </h2>
           <p className="text-lg transition duration-300  text-center md:text-left">
-            Motivated final-year Computer Science Engineering student
-            specializing in Java Full Stack Development. Experienced in Java,
-            Spring Boot, MySQL, Data Structures and Algorithms, HTML, and CSS.
-            Strong problem-solving skills with a record of solving 700+ problems
-            and 1660+ contest rating at LeetCode. Eager to leverage skills in
-            real-world projects and contribute to the technology industry.
+            Hello, I’m Guddu Kumar, a software engineer who graduated in 2024
+            with a strong foundation in Computer Science Engineering. I
+            completed my B.Tech at Lakshmi Narain College of Technology (LNCT)
+            in Bhopal, where I gained in-depth knowledge of Data Structures and
+            Algorithms (DSA). I excel at solving complex problems and have
+            expertise in various technologies, including React.js, Spring Boot,
+            and MySQL. I have experience in developing software applications and
+            a keen interest in leveraging my skills in real-world projects to
+            contribute to the technology industry.
           </p>
         </div>
 
