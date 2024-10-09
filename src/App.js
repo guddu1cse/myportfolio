@@ -7,6 +7,7 @@ import Projects from './Components/Projects';
 import Contact from './Components/Contacts';
 import Tools from './Components/Tools';
 import Certifications from './Components/Certifications';
+import LeetCodeDashboard from './Components/LeetCodeDashboard';
 
 function App() {
   return (
@@ -27,6 +28,9 @@ function App() {
         </section>
         <section className=" m-0 p-4"> {/* Added padding, removed margin */}
           <Tools />
+        </section>
+        <section className=" m-0 p-4"> {/* Added padding, removed margin */}
+          <LeetCodeDashboard />
         </section>
         <section className=" m-0 p-4"> {/* Added padding, removed margin */}
           <Projects />
