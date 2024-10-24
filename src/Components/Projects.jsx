@@ -1,5 +1,6 @@
 // src/components/Projects.jsx
 import React, { useState, useEffect } from "react";
+import { gitHubApi } from "../config/config";
 
 const Projects = () => {
   const [projects, setProjects] = useState([]);
@@ -12,7 +13,7 @@ const Projects = () => {
     const fetchProjects = async () => {
       try {
         const response = await fetch(
-          `https://api.github.com/users/guddu1cse/repos?per_page=${perPage}&page=${page}`
+          `${gitHubApi}?per_page=${perPage}&page=${page}`
         );
         if (!response.ok) {
           throw new Error("Failed to fetch projects");

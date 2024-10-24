@@ -1,5 +1,6 @@
 import React from "react";
 import { FaLinkedin, FaGithub, FaEnvelope, FaPhone } from "react-icons/fa";
+import { github, linkedin, email, contact } from "../config/config";
 
 const Contacts = () => {
   return (
@@ -30,7 +31,7 @@ const Contacts = () => {
       `}</style>
       <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-8 mx-auto">
         <a
-          href="https://www.linkedin.com/in/guddu1cse/"
+          href={linkedin}
           target="_blank"
           rel="noopener noreferrer"
           className="button"
@@ -39,7 +40,7 @@ const Contacts = () => {
           LinkedIn
         </a>
         <a
-          href="https://github.com/guddu1cse"
+          href={github}
           target="_blank"
           rel="noopener noreferrer"
           className="button"
@@ -47,11 +48,11 @@ const Contacts = () => {
           <FaGithub className="icon" />
           GitHub
         </a>
-        <a href="mailto:guddu.javadev@gmail.com" className="button">
+        <a href={`mailto:${email}`} className="button">
           <FaEnvelope className="icon" />
           Email
         </a>
-        <a href="tel:+918084166187" className="button">
+        <a href={`tel:+91${contact}`} className="button">
           <FaPhone className="icon" />
           Phone
         </a>
