@@ -1,6 +1,6 @@
 // src/components/About.jsx
 import React from "react";
-import profileImage from "../assets/profile-img.jpg"; // Ensure this is the correct path
+import { aboutMe, profileImage } from "../config/config";
 
 const About = () => {
   return (
@@ -15,15 +15,7 @@ const About = () => {
             About Me
           </h2>
           <p className="text-lg transition duration-300  text-center md:text-left">
-            Hello, I’m Guddu Kumar, a software engineer who graduated in 2024
-            with a strong foundation in Computer Science Engineering. I
-            completed my B.Tech at Lakshmi Narain College of Technology (LNCT)
-            in Bhopal, where I gained in-depth knowledge of Data Structures and
-            Algorithms (DSA). I excel at solving complex problems and have
-            expertise in various technologies, including React.js, Spring Boot,
-            and MySQL. I have experience in developing software applications and
-            a keen interest in leveraging my skills in real-world projects to
-            contribute to the technology industry.
+            {aboutMe}
           </p>
         </div>
 
@@ -31,7 +23,7 @@ const About = () => {
         <div className="relative transition-transform duration-300 transform hover:scale-110 flex items-center justify-center">
           <div className="absolute w-48 h-48 rounded-full  animate-spin-slow"></div>
           <img
-            src="https://avatars.githubusercontent.com/u/73424882?s=400&u=51551f37d5984f47268978e989304e8093442d41&v=4"
+            src={profileImage}
             alt="Profile"
             className="rounded-lg w-48 h-48 object-cover shadow-xl border-2 border-sky-400"
           />

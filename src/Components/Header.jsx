@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { leetcodeProfile, name, resume } from "../config/config";
 import {
   FaUser,
   FaTools,
@@ -21,7 +22,7 @@ const Header = () => {
     <header className="bg-gray-900 text-white p-4 fixed top-0 w-full z-50 shadow-lg rounded-b-lg transform transition-transform duration-300 hover:shadow-2xl mb-0">
       <div className="flex justify-between items-center max-w-6xl mx-auto">
         {/* Logo/Name */}
-        <h1 className="text-2xl font-bold">Guddu Kumar</h1>
+        <h1 className="text-2xl font-bold">{name}</h1>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-6">
@@ -50,14 +51,15 @@ const Header = () => {
             <FaEnvelope className="mr-1" /> Contact
           </a>
           <a
-            href="https://hackerrank-resume.s3.us-east-1.amazonaws.com/uploads/9758288/OTc1ODI4OA==.pdf"
+            href={resume}
             className="flex items-center hover:text-neon transition duration-300"
+            target="_blank"
             download
           >
             <FaFileDownload className="mr-1" /> Resume
           </a>
           <a
-            href="https://www.leetcode.com/LC-guddu1cse"
+            href={leetcodeProfile}
             className="flex items-center hover:text-neon transition duration-300"
             target="_blank"
             rel="noopener noreferrer"
@@ -111,9 +113,10 @@ const Header = () => {
             <FaEnvelope className="mr-2" /> Contact
           </a>
           <a
-            href="https://hackerrank-resume.s3.us-east-1.amazonaws.com/uploads/9758288/OTc1ODI4OA==.pdf"
+            href={resume}
             className="flex items-center hover:text-neon transition duration-300"
             download
+            target="_blank"
             onClick={toggleMenu}
           >
             <FaFileDownload className="mr-2" /> Resume
