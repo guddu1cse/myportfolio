@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { SiLeetcode } from "react-icons/si";
 import { motion } from "framer-motion";
-import { leetcodeApi } from "../config/config";
+import { leetcodeApi, profileLink } from "../config/config";
 
 const LeetCodeDashboard = () => {
   const [userData, setUserData] = useState(null);
@@ -32,7 +32,23 @@ const LeetCodeDashboard = () => {
   }, []);
 
   if (loading) return <LoadingMessage />;
-  if (error) return <div className="text-red-500 text-center">{error}</div>;
+
+  // If there is an error, show the redirect link
+  if (error) {
+    return (
+      <div className="text-center">
+        <div className="text-red-500 mb-4">{error}</div>
+        <a
+          href={profileLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-500 hover:underline"
+        >
+          Go to my LeetCode profile
+        </a>
+      </div>
+    );
+  }
 
   // Destructure required data from userData
   const {
@@ -48,9 +64,6 @@ const LeetCodeDashboard = () => {
     ranking,
   } = userData;
 
-  // Profile link
-  const profileLink = "https://leetcode.com/LC-guddu1cse/";
-
   return (
     <div className="flex justify-center items-center">
       <motion.div
@@ -59,12 +72,17 @@ const LeetCodeDashboard = () => {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5 }}
       >
-        <h1 className="text-white text-3xl font-bold mb-4 text-center flex items-center justify-center">
+        <div className="relative group flex items-center justify-center">
           <a href={profileLink} target="_blank" rel="noopener noreferrer">
             <SiLeetcode className="text-blue-600 text-4xl mr-2" />
           </a>
-          LeetCode
-        </h1>
+          <h1 className="text-white text-3xl font-bold mb-0">LeetCode</h1>
+
+          {/* Hover Banner */}
+          <div className="absolute bottom-10 bg-gray-700 text-white text-sm py-1 px-3 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            Go to LeetCode Profile
+          </div>
+        </div>
 
         {/* Problem Solving Statistics */}
         <h2 className="text-white text-2xl font-semibold mb-4 text-center">
@@ -133,8 +151,8 @@ const LeetCodeDashboard = () => {
 
         .ripple-loader {
           position: relative;
-          width: 80px; /* You can adjust the size */
-          height: 80px; /* You can adjust the size */
+          width: 80px;
+          height: 80px;
           margin: 0 auto;
           border-radius: 50%;
           border: 5px solid rgba(255, 255, 255, 0.2);
@@ -143,7 +161,7 @@ const LeetCodeDashboard = () => {
         }
 
         .loading-text {
-          font-size: 1.5rem; /* You can adjust the size */
+          font-size: 1.5rem;
           animation: colorChange 2s infinite;
         }
 
@@ -175,9 +193,7 @@ const LoadingMessage = () => {
   return (
     <div className="text-white text-center">
       <div className="ripple-loader"></div>
-      <h2 className="loading-text">
-        Please wait while fetching data from LeetCode site...
-      </h2>
+      <h2 className="loading-text">fetching data from LeetCode site...</h2>
     </div>
   );
 };

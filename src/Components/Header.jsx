@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { leetcodeProfile, name, resume } from "../config/config";
+import { name, resume, profileLink } from "../config/config";
 import {
   FaUser,
   FaTools,
@@ -7,7 +7,7 @@ import {
   FaEnvelope,
   FaBars,
   FaTimes,
-  FaFileDownload, // Importing the download icon
+  FaFileDownload,
 } from "react-icons/fa";
 import { SiLeetcode } from "react-icons/si"; // Importing LeetCode icon
 
@@ -59,7 +59,7 @@ const Header = () => {
             <FaFileDownload className="mr-1" /> Resume
           </a>
           <a
-            href={leetcodeProfile}
+            href={profileLink}
             className="flex items-center hover:text-neon transition duration-300"
             target="_blank"
             rel="noopener noreferrer"

@@ -1,5 +1,6 @@
 import { FaJava, FaReact } from "react-icons/fa";
 import { SiLeetcode } from "react-icons/si";
+import { MdArchitecture } from "react-icons/md";
 
 export const name = "Guddu Kumar";
 export const profileLink = "https://leetcode.com/LC-guddu1cse/";
@@ -9,7 +10,7 @@ export const linkedin = "https://www.linkedin.com/in/guddu1cse";
 export const github = "https://github.com/guddu1cse";
 export const profileImage = "https://avatars.githubusercontent.com/u/73424882?s=400&u=56dc45a1f9f667ae77bce3faac22a7ee73d68a94&v=4";
 export const resume = "https://hackerrank-resume.s3.us-east-1.amazonaws.com/uploads/9758288/OTc1ODI4OA==.pdf";
-export const leetcodeProfile = "https://www.leetcode.com/guddu1cse";
+export const leetcodeProfile = "https://www.leetcode.com/LC-guddu1cse";
 export const email = "guddu.javadev@gmail.com";
 export const contact = "8084166187";
 
@@ -35,6 +36,11 @@ export const certifications = [
         title: "Data Structures and Algorithms",
         url: "https://assets.nextleap.app/certificate/Cohort-5-9faa98583d17fdf3d8c761fba59ddd14.pdf",
         icon: <SiLeetcode className="text-orange-600" />, // LeetCode icon
+    },
+    {
+        title: "System Design",
+        url: "https://d3r0n59fu7ub44.cloudfront.net/certificates/courseCertificate/2024-02-02/course_64e39613c899c20312714e9e_user_64f82ae8af97410c0679de08.pdf",
+        icon: <MdArchitecture className="text-purple-600" />, // System Design icon
     },
     {
         title: "Frontend Developer Program",
