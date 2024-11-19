@@ -1,4 +1,3 @@
-// src/App.jsx
 import React from 'react';
 import Header from './Components/Header';
 import About from './Components/About';
@@ -8,6 +7,7 @@ import Contact from './Components/Contacts';
 import Tools from './Components/Tools';
 import Certifications from './Components/Certifications';
 import LeetCodeDashboard from './Components/LeetCodeDashboard';
+import Footer from './Components/Footer';
 
 function App() {
   return (
@@ -34,6 +34,9 @@ function App() {
         </section>
         <section className=" m-0 p-4"> {/* Added padding, removed margin */}
           <Projects />
+        </section>
+        <section className=" m-0 p-4"> {/* Added padding, removed margin */}
+          <Footer />
         </section>
       </main>
     </div>
