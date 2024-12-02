@@ -17,7 +17,7 @@ const LeetCodeDashboard = () => {
         url: leetcodeApi,
       });
 
-      console.log(response.data); // Log data for debugging
+      // console.log(response.data); // Log data for debugging
       setUserData(response.data);
       setLoading(false);
     } catch (err) {

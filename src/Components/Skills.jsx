@@ -1,46 +1,25 @@
-import React from "react";
-import {
-  FaJava,
-  FaReact,
-  FaHtml5,
-  FaCss3Alt,
-  FaAws,
-  FaGitAlt,
-} from "react-icons/fa";
-import {
-  SiSpringboot,
-  SiTailwindcss,
-  SiJavascript,
-  SiMysql,
-  SiJest,
-  SiSqlite,
-  SiHibernate,
-  SiSpringsecurity,
-  SiJunit5,
-  SiThymeleaf,
-} from "react-icons/si";
-
-// Skills data array with icons
-const skills = [
-  { name: "Java", icon: <FaJava /> },
-  { name: "JavaScript", icon: <SiJavascript /> },
-  { name: "Spring Boot", icon: <SiSpringboot /> },
-  { name: "React.js", icon: <FaReact /> },
-  { name: "DSA", icon: <SiJest /> },
-  { name: "HTML", icon: <FaHtml5 /> },
-  { name: "CSS", icon: <FaCss3Alt /> },
-  { name: "Tailwind CSS", icon: <SiTailwindcss /> },
-  { name: "MySQL", icon: <SiMysql /> },
-  { name: "SQL", icon: <SiSqlite /> },
-  { name: "AWS", icon: <FaAws /> },
-  { name: "Git", icon: <FaGitAlt /> },
-  { name: "Hibernate", icon: <SiHibernate /> },
-  { name: "JUnit5", icon: <SiJunit5 /> },
-  { name: "Thymeleaf", icon: <SiThymeleaf /> },
-  { name: "Spring Security", icon: <SiSpringsecurity /> },
-];
+import React, { useEffect, useState } from "react";
+import { skills } from "../config/config";
 
 const Skills = () => {
+  const [visible, setVisible] = useState([]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const skillContainers = document.querySelectorAll(".skill-container");
+      skillContainers.forEach((container, index) => {
+        const rect = container.getBoundingClientRect();
+        if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
+          setVisible((prevVisible) => [...new Set([...prevVisible, index])]);
+        }
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Trigger on load
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <section id="skills" className="text-white p-8 flex flex-col items-center">
       <h2 className="text-4xl font-bold neon-glow mb-8 text-center">Skills</h2>
@@ -53,10 +32,12 @@ const Skills = () => {
           height: 160px;
           position: relative;
           transform-style: preserve-3d;
-          transition: transform 0.8s;
+          transition: transform 0.8s ease-in-out, opacity 0.6s ease-in-out;
+          opacity: 0;
         }
-        .cube:hover {
-          transform: rotateY(180deg);
+        .cube.visible {
+          opacity: 1;
+          transform: translateY(0);
         }
         .face {
           position: absolute;
@@ -78,8 +59,18 @@ const Skills = () => {
       `}</style>
       <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mx-auto">
         {skills.map((skill, index) => (
-          <div key={index} className="perspective flex justify-center">
-            <div className="cube">
+          <div
+            key={index}
+            className={`skill-container perspective flex justify-center`}
+          >
+            <div
+              className={`cube ${
+                visible.includes(index) ? "visible" : ""
+              } translate-y-10`}
+              style={{
+                transitionDelay: `${index * 0.1}s`,
+              }}
+            >
               {/* Front Face */}
               <div className="face front">
                 <div className="flex flex-col items-center justify-center">
