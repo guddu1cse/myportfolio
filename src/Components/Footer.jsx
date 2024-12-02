@@ -1,21 +1,59 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   contact,
   email,
+  footerAbout,
   github,
   instagram,
   linkedin,
   name,
 } from "../config/config";
 import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
+import Gemini from "./Gemini";
 
 const Footer = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const footerRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768); // Initial check
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768); // Update state on resize
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize); // Cleanup
+  }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true); // Start animation when footer is in viewport
+        }
+      },
+      { threshold: 0.1 } // Trigger when 10% of the footer is visible
+    );
+
+    if (footerRef.current) {
+      observer.observe(footerRef.current);
+    }
+
+    return () => {
+      if (footerRef.current) {
+        observer.unobserve(footerRef.current);
+      }
+    };
+  }, []);
+
   const footerStyle = {
     color: "#ffffff",
     padding: "2rem 0",
     textAlign: "center",
     borderTop: "1px solid #e0e0e0",
-    transition: "all 0.3s ease-in-out",
+    transition: "opacity 1.5s ease-out, transform 1.5s ease-out",
+    opacity: isVisible ? 1 : 0,
+    transform: isVisible ? "translateY(0)" : "translateY(50px)",
   };
 
   const footerContentStyle = {
@@ -38,7 +76,7 @@ const Footer = () => {
   const sectionTitleStyle = {
     fontSize: "1.2rem",
     fontWeight: "bold",
-    color: "#969696", // Light white color
+    color: "#969696",
     transition: "color 0.3s ease, transform 0.3s ease",
   };
 
@@ -70,7 +108,7 @@ const Footer = () => {
   };
 
   return (
-    <footer style={footerStyle}>
+    <footer style={footerStyle} ref={footerRef}>
       <div style={footerContentStyle}>
         <div style={sectionStyle}>
           <h2
@@ -80,11 +118,8 @@ const Footer = () => {
           >
             About Me
           </h2>
-          <p>
-            I'm a dedicated software developer skilled in React.js, Spring Boot,
-            and Salesforce, passionate about building impactful projects and
-            solving complex problems.
-          </p>
+          {/*<p>{footerAbout}</p> */}
+          <Gemini message={footerAbout} fontSize={isMobile ? 12 : 17} />
         </div>
         <div style={sectionStyle}>
           <h2
@@ -95,7 +130,6 @@ const Footer = () => {
             Contact
           </h2>
           <p>
-            {/*Email:{" "}*/}
             <a
               href={`mailto:${email}`}
               style={linkStyle}

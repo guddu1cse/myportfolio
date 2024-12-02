@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { name, resume, profileLink } from "../config/config";
+import { name, resume, profileLink, leetcodeProfile } from "../config/config";
 import {
   FaUser,
   FaTools,
@@ -8,8 +8,10 @@ import {
   FaBars,
   FaTimes,
   FaFileDownload,
+  FaBriefcase,
 } from "react-icons/fa";
-import { SiLeetcode } from "react-icons/si"; // Importing LeetCode icon
+import { SiLeetcode } from "react-icons/si";
+import Gemini from "./Gemini";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -19,10 +21,10 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-gray-900 text-white p-4 fixed top-0 w-full z-50 shadow-lg rounded-b-lg transform transition-transform duration-300 hover:shadow-2xl mb-0">
+    <header className="bg-gray-900 text-white p-2 fixed top-0 w-full z-50 shadow-lg rounded-b-lg transform transition-transform duration-300 hover:shadow-2xl mb-0">
       <div className="flex justify-between items-center max-w-6xl mx-auto">
         {/* Logo/Name */}
-        <h1 className="text-2xl font-bold">{name}</h1>
+        <Gemini message={name} fontSize={28} />
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-6">
@@ -31,6 +33,12 @@ const Header = () => {
             className="flex items-center hover:text-neon transition duration-300"
           >
             <FaUser className="mr-1" /> About
+          </a>
+          <a
+            href="#experience"
+            className="flex items-center hover:text-neon transition duration-300"
+          >
+            <FaBriefcase className="mr-1" /> Experience
           </a>
           <a
             href="#skills"
@@ -64,12 +72,11 @@ const Header = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <SiLeetcode className="mr-1" /> LeetCode{" "}
-            {/* SiLeetcode icon used */}
+            <SiLeetcode className="mr-1" /> LeetCode
           </a>
         </nav>
 
-        {/* Hamburger Menu for Mobile */}
+        {/* Toggle Menu for Mobile */}
         <div className="md:hidden flex items-center">
           <button onClick={toggleMenu} className="focus:outline-none">
             {isMenuOpen ? (
@@ -90,6 +97,13 @@ const Header = () => {
             onClick={toggleMenu}
           >
             <FaUser className="mr-2" /> About
+          </a>
+          <a
+            href="#experience"
+            className="flex items-center hover:text-neon transition duration-300"
+            onClick={toggleMenu}
+          >
+            <FaBriefcase className="mr-2" /> Experience
           </a>
           <a
             href="#skills"
@@ -122,14 +136,13 @@ const Header = () => {
             <FaFileDownload className="mr-2" /> Resume
           </a>
           <a
-            href="https://www.leetcode.com/LC-guddu1cse"
+            href={profileLink}
             className="flex items-center hover:text-neon transition duration-300"
             target="_blank"
             rel="noopener noreferrer"
             onClick={toggleMenu}
           >
-            <SiLeetcode className="mr-2" /> LeetCode{" "}
-            {/* SiLeetcode icon used */}
+            <SiLeetcode className="mr-2" /> LeetCode
           </a>
         </nav>
       )}
