@@ -111,6 +111,11 @@ export const certifications = [
         icon: <MdArchitecture className="text-purple-600" />, // System Design icon
     },
     {
+        title: "React.js",
+        url: "https://www.mygreatlearning.com/certificate/PLWQVOVE",
+        icon: <FaReact style={{ color: '#6ccff6' }} />, // Frontend Mentor icon
+    },
+    {
         title: "Frontend Developer Program",
         url: "https://www.edyoda.com/public-certificate/guddu1cse/1482",
         icon: <FaReact style={{ color: '#6ccff6' }} />, // Frontend Mentor icon
