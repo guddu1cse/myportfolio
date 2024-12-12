@@ -11,6 +11,9 @@ import Footer from './Components/Footer';
 import Experience from './Components/Experience';
 import { profileImage } from './config/config';
 import LeetCodeStats from './Components/LeetcodeStats';
+import Dashboard from './Components/Album/Dashboard';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 function App() {
 
@@ -26,9 +29,6 @@ function App() {
       <main className="pt-14 ">
         <section className=" m-0 p-4"> {/* Added About Section */}
           <About />
-        </section>
-        <section className="m-0 p-4"> {/* Added Experience Section */}
-          <Experience />
         </section>
         <section className=" m-0 p-4"> {/* Added Contact Section */}
           <Contact />
