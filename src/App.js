@@ -30,6 +30,9 @@ function App() {
         <section className=" m-0 p-4"> {/* Added About Section */}
           <About />
         </section>
+        <section className=" m-0 p-4"> {/* Added About Section */}
+          <Experience />
+        </section>
         <section className=" m-0 p-4"> {/* Added Contact Section */}
           <Contact />
         </section>
