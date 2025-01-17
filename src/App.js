@@ -10,7 +10,6 @@ import LeetCodeDashboard from './Components/LeetCodeDashboard';
 import Footer from './Components/Footer';
 import Experience from './Components/Experience';
 import { profileImage } from './config/config';
-import LeetCodeStats from './Components/LeetcodeStats';
 import Dashboard from './Components/Album/Dashboard';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -30,6 +29,9 @@ function App() {
         <section className=" m-0 p-4"> {/* Added About Section */}
           <About />
         </section>
+        <section className="m-0 p-4"> {/* Added Experience Section */}
+          <Experience />
+        </section>
         <section className=" m-0 p-4"> {/* Added Contact Section */}
           <Contact />
         </section>
@@ -47,6 +49,9 @@ function App() {
         </section>
         <section className=" m-0 p-4"> {/* Added Projects Section */}
           <Projects />
+        </section>
+        <section className=" m-0 p-4"> {/* Added Footer Section */}
+          <Dashboard />
         </section>
         <section className=" m-0 p-4"> {/* Added Footer Section */}
           <Footer />
