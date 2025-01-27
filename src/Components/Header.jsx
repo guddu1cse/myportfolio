@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { name, resume, profileLink, leetcodeProfile } from "../config/config";
+import {
+  name,
+  resume,
+  profileLink,
+  leetcodeProfile,
+  profileImage,
+} from "../config/config";
 import {
   FaUser,
   FaTools,
@@ -24,7 +30,14 @@ const Header = () => {
     <header className="bg-gray-900 text-white p-2 fixed top-0 w-full z-50 shadow-lg rounded-b-lg transform transition-transform duration-300 hover:shadow-2xl mb-0">
       <div className="flex justify-between items-center max-w-6xl mx-auto">
         {/* Logo/Name */}
-        <Gemini message={name} fontSize={28} />
+        <div className="flex items-center gap-3">
+          <img
+            src={profileImage}
+            alt="Logo"
+            className="w-9 h-9 rounded-full border-2 border-x-orange-400 border-y-purple-500 hover:scale-110 transform transition-transform duration-300 "
+          />
+          <Gemini message={name} fontSize={28} />
+        </div>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-6">
