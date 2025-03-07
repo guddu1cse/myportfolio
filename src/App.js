@@ -23,7 +23,7 @@ function App() {
   document.head.appendChild(link);
 
   return (
-    <div className="bg-gradient-to-r from-black to-gray-800 text-white min-h-screen overflow-auto">
+    <div className="bg-gradient-to-r from-black to-gray-800 text-white min-h-screen">
       <Header />
       <main className="pt-14 ">
         <section className=" m-0 p-4"> {/* Added About Section */}
