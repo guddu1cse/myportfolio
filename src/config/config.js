@@ -125,12 +125,20 @@ export const certifications = [
 //list of experiences
 export const experiences = [
     {
+        year: 2025,
+        company: 'DevX',
+        duration: 'April 2025 - Present',
+        role: "Software Developer Engineer (SDE-1)",
+        description:
+            "",
+    },
+    {
         year: "2024",
         company: "MountBlue Technologies",
         duration: "November 2024 - Present",
         role: "Software Developer Engineer (SDE-1)",
         description:
-            "",
+            "Working as a Software Development Engineer, actively contributing to real-world client projects while sharpening full-stack development skills. Responsibilities include building and maintaining scalable web applications, writing clean and efficient code, and collaborating with teams in Agile environments. Gained hands-on experience with technologies such as React.js, Next.js, Node.js, Express.js, MongoDB, MySQL, SQL, and WebSocket. Continuously enhancing problem-solving abilities and adhering to best practices for high-quality software delivery.",
     },
     {
         year: "2024",

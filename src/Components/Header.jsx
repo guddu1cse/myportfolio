@@ -91,22 +91,6 @@ const Header = () => {
           >
             <SiLeetcode className="mr-1" /> LeetCode
           </a>
-          <a
-            href={github}
-            className="flex items-center hover:text-neon transition duration-300"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FaGithub className="mr-1" /> GitHub
-          </a>
-          <a
-            href={linkedin}
-            className="flex items-center hover:text-neon transition duration-300"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FaLinkedin className="mr-1" /> Linkedin
-          </a>
         </nav>
 
         {/* Toggle Menu for Mobile */}
@@ -176,24 +160,6 @@ const Header = () => {
             onClick={toggleMenu}
           >
             <SiLeetcode className="mr-2" /> LeetCode
-          </a>
-          <a
-            href={github}
-            className="flex items-center hover:text-neon transition duration-300"
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={toggleMenu}
-          >
-            <FaGithub className="mr-2" /> GitHub
-          </a>
-          <a
-            href={linkedin}
-            className="flex items-center hover:text-neon transition duration-300"
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={toggleMenu}
-          >
-            <FaLinkedin className="mr-2" /> Linkedin
           </a>
         </nav>
       )}
