@@ -126,17 +126,28 @@ export const certifications = [
 export const experiences = [
     {
         year: 2025,
-        company: 'DevX',
-        duration: 'April 2025 - Present',
-        role: "Software Developer Engineer (SDE-1)",
+        company: 'Vymo Asia',
+        duration: 'May 2025 - Present',
+        role: "Member of Technical Staff (MTS)",
+        link: "https://www.vymo.com/",
         description:
-            "",
+            "Currently contributing to project setup and gaining deep understanding of the codebase and system architecture.",
+    },
+    {
+        year: 2025,
+        company: 'devx commerce',
+        duration: 'April 2025 - May 2025',
+        role: "Software Developer Engineer (SDE-1)",
+        link: "https://devxcommerce.com/",
+        description:
+            "Built and maintained Comet POS, a retail management system, using React.js, Next.js, Node.js, TypeScript, PostgreSQL, and AWS. Key features included order processing, split payments (Card, Razorpay, Cash), barcode scanning, dynamic coupons, advanced admin controls, and CMS-integrated cash handovers.",
     },
     {
         year: "2024",
         company: "MountBlue Technologies",
         duration: "November 2024 - Present",
         role: "Software Developer Engineer (SDE-1)",
+        link: "https://www.mountblue.io/",
         description:
             "Working as a Software Development Engineer, actively contributing to real-world client projects while sharpening full-stack development skills. Responsibilities include building and maintaining scalable web applications, writing clean and efficient code, and collaborating with teams in Agile environments. Gained hands-on experience with technologies such as React.js, Next.js, Node.js, Express.js, MongoDB, MySQL, SQL, and WebSocket. Continuously enhancing problem-solving abilities and adhering to best practices for high-quality software delivery.",
     },
@@ -145,6 +156,7 @@ export const experiences = [
         company: "Ekloud Inc",
         duration: "February 2024 - April 2024 (3 Months)",
         role: "Backend Developer Intern",
+        link: "https://ekloudservices.com/",
         description:
             "Implemented API endpoints and data processing pipelines, enhancing the back-end functionality and ensuring data integrity for various client projects.",
     },

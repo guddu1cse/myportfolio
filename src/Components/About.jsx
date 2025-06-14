@@ -46,19 +46,34 @@ const About = () => {
           </p>
         </div>
 
-        {/* Profile Image Section */}
-        <div className="relative flex items-center justify-center group">
-          {/* Profile Image */}
-          <img
-            src={profileImage}
-            alt="Profile"
-            className="rounded-lg w-40 h-40 sm:w-48 sm:h-48 object-cover shadow-xl border-2 border-sky-400 transform transition-transform duration-500 group-hover:scale-110"
-          />
+        {/* Profile Image and Button Section */}
+        <div className="flex flex-col items-center">
+          {/* Profile Image Container */}
+          <div className="relative flex items-center justify-center group">
+            {/* Profile Image */}
+            <img
+              src={profileImage}
+              alt="Profile"
+              className="rounded-lg w-40 h-40 sm:w-48 sm:h-48 object-cover shadow-xl border-2 border-sky-400 transform transition-transform duration-500 group-hover:scale-110"
+            />
 
-          {/* Name and Role Section */}
-          <div className="absolute bottom-0 left-0 w-full text-center opacity-0 group-hover:opacity-100 transform translate-y-6 group-hover:translate-y-0 transition-all duration-300 bg-black bg-opacity-60 text-white p-2 rounded-lg shadow-xl">
-            <h3 className="text-lg font-bold">{name}</h3>
-            <p className="text-sm font-medium text-sky-400">{role}</p>
+            {/* Name and Role Section */}
+            <div className="absolute bottom-0 left-0 w-full text-center opacity-0 group-hover:opacity-100 transform translate-y-6 group-hover:translate-y-0 transition-all duration-300 bg-black bg-opacity-60 text-white p-2 rounded-lg shadow-xl">
+              <h3 className="text-lg font-bold">{name}</h3>
+              <p className="text-sm font-medium text-sky-400">{role}</p>
+            </div>
+          </div>
+          
+          {/* Portfolio Button */}
+          <div className="mt-4 animate-pulse hover:scale-105">
+            <a
+              href="https://meetguddudev.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block text-white px-3 py-1 font-semibold border border-sky-500 hover:border-green-700 rounded-lg transition-all duration-300 ease-in-out transform hover:scale-105"
+            >
+              Hire Me
+            </a>
           </div>
         </div>
       </div>
