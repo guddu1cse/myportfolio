@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from './Components/Header';
 import About from './Components/About';
 import Skills from './Components/Skills';
@@ -21,6 +21,15 @@ function App() {
   link.rel = 'icon';
   link.href = profileImage;
   document.head.appendChild(link);
+  useEffect(() => {
+    fetch('https://ass-server-4qwz.onrender.com/api/track-visit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({}),
+    });
+  }, []);
 
   return (
     <div className="bg-gradient-to-r from-black to-gray-800 text-white min-h-screen">
