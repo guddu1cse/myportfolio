@@ -23,13 +23,13 @@ function App() {
   link.href = profileImage;
   document.head.appendChild(link);
   useEffect(() => {
-    // fetch('https://ass-server-4qwz.onrender.com/api/track-visit', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify({}),
-    // });
+    fetch('https://ass-server-4qwz.onrender.com/api/track-visit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({}),
+    });
   }, []);
 
   return (
