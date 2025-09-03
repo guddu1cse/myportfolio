@@ -13,6 +13,7 @@ import { profileImage } from './config/config';
 import Dashboard from './Components/Album/Dashboard';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import ChatBox from './Components/ChatBox';
 
 function App() {
 
@@ -22,18 +23,21 @@ function App() {
   link.href = profileImage;
   document.head.appendChild(link);
   useEffect(() => {
-    fetch('https://ass-server-4qwz.onrender.com/api/track-visit', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({}),
-    });
+    // fetch('https://ass-server-4qwz.onrender.com/api/track-visit', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify({}),
+    // });
   }, []);
 
   return (
     <div className="bg-gradient-to-r from-black to-gray-800 text-white min-h-screen">
       <Header />
+      <div className="fixed bottom-0 right-0 z-50">
+        <ChatBox />
+      </div>
       <main className="pt-14 ">
         <section className=" m-0 p-4"> {/* Added About Section */}
           <About />
