@@ -2,24 +2,56 @@ import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { name } from "../config/config";
 import ailogo from '../assets/sel.png';
+const aiBaseURL = process.env.REACT_APP_AI_BASE_URL;
+const authToken = process.env.REACT_APP_AUTH_TOKEN_KEY;
 
 export default function ChatBox() {
     const [isOpen, setIsOpen] = useState(false);
     const [showHint, setShowHint] = useState(true);
+    const [generating, setGenerating] = useState(false);
     const [messages, setMessages] = useState([
         { from: "ai", text: `Hello! 👋 I’m your AI assistant. Ask me anything about ${name}.` },
-        { from: "user", text: `what is you name ?` },
-        { from: "ai", text: `My name is ${name}.` }
-
     ]);
     const [input, setInput] = useState("");
     const chatEndRef = useRef(null);
 
-    const handleSend = () => {
+    const handleSend = async () => {
         if (!input.trim()) return;
+
+        // Add user message immediately
         setMessages((prev) => [...prev, { from: "user", text: input }]);
+        const userMessage = input;
         setInput("");
+        setGenerating(true);
+        let url = `${aiBaseURL}/api/chat/prompt?authToken=${authToken}&prompt=${userMessage}`;
+        console.log("Fetching AI response from URL:", url);
+        try {
+            const response = await fetch(
+                `${aiBaseURL}/api/chat/prompt?authToken=${authToken}&prompt=${userMessage}`
+            );
+
+            const result = await response.json();
+
+            if (result.success && result.data) {
+                // Add AI response
+                setMessages((prev) => [...prev, { from: "ai", text: result.data.trim() }]);
+            } else {
+                setMessages((prev) => [
+                    ...prev,
+                    { from: "ai", text: "⚠️ Sorry, I couldn’t generate a response." },
+                ]);
+            }
+        } catch (error) {
+            console.error("Error fetching AI response:", error);
+            setMessages((prev) => [
+                ...prev,
+                { from: "ai", text: "❌ Something went wrong. Please try again." },
+            ]);
+        } finally {
+            setGenerating(false);
+        }
     };
+
 
     // Auto-scroll
     useEffect(() => {
@@ -31,9 +63,9 @@ export default function ChatBox() {
 
         const interval = setInterval(() => {
             setShowHint(true);
-            const timeout = setTimeout(() => setShowHint(false), 3000); // visible for 3s
+            const timeout = setTimeout(() => setShowHint(false), 5000); // visible for 5s
             return () => clearTimeout(timeout);
-        }, 5000); // repeat every 5s
+        }, 30000);
 
         return () => clearInterval(interval);
     }, [isOpen]);
@@ -101,10 +133,10 @@ export default function ChatBox() {
                             {messages.map((msg, i) => (
                                 <div
                                     key={i}
-                                    className={`px-4 py-2 rounded-xl text-sm max-w-[80%] ${msg.from === "ai"
+                                    className={`px-4 py - 2 rounded - xl text - sm max - w - [80 %] ${msg.from === "ai"
                                         ? "bg-gray-100 text-gray-800 self-start"
                                         : "bg-blue-500 text-white self-end"
-                                        }`}
+                                        } `}
                                 >
                                     {msg.text}
                                 </div>
@@ -124,9 +156,15 @@ export default function ChatBox() {
                             />
                             <button
                                 onClick={handleSend}
-                                className="ml-2 p-2 text-gray-600 hover:text-gray-900"
+                                disabled={input.length <= 5 || generating}
+                                className="ml-2 p-2 text-gray-600 hover:text-gray-900 disabled:text-gray-400 disabled:cursor-not-allowed"
+                                aria-disabled={input.length <= 5 || generating}
                             >
-                                ➤
+                                {input.length > 5 && !generating ? (
+                                    <span className="text-3xl text-green-500 rounded-full">➤</span>
+                                ) : (
+                                    <span className="text-3xl text-gray-400 rounded-full">➤</span>
+                                )}
                             </button>
                         </div>
                     </motion.div>
