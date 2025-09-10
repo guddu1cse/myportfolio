@@ -32,7 +32,7 @@ import { MdArchitecture } from "react-icons/md";
 
 export const username = `guddu1cse`;
 export const name = "Guddu Kumar";
-export const PAGE_TITLE = ```${name} | Member of Technical Staff at Vymo```;
+export const PAGE_TITLE = `${name} | Member of Technical Staff at Vymo`;
 export const organization = `Vymo`;
 export const role = `Member of Technical Staff at ${organization}`;
 export const profileLink = `https://leetcode.com/LC-${username}/`;

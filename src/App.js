@@ -23,16 +23,16 @@ function App() {
   link.rel = 'icon';
   link.href = profileImage; // Use the profile image as favicon
   document.head.appendChild(link);
+  document.title = PAGE_TITLE; // Set the page title dynamically
 
   useEffect(() => {
-    document.title = PAGE_TITLE; // Set the page title dynamically
-    // fetch('https://ass-server-4qwz.onrender.com/api/track-visit', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify({}),
-    // });
+    fetch('https://ass-server-4qwz.onrender.com/api/track-visit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({}),
+    });
   }, []);
 
   return (
