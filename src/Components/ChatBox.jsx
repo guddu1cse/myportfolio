@@ -7,13 +7,25 @@ const authToken = process.env.REACT_APP_AUTH_TOKEN_KEY;
 
 export default function ChatBox() {
     const [isOpen, setIsOpen] = useState(false);
-    const [showHint, setShowHint] = useState(true);
+    const [showHint, setShowHint] = useState(false);
     const [generating, setGenerating] = useState(false);
     const [messages, setMessages] = useState([
         { from: "ai", text: `Hello! 👋 I’m your AI assistant. Ask me anything about ${name}.` },
     ]);
     const [input, setInput] = useState("");
     const chatEndRef = useRef(null);
+    const showHintTimeout = useRef(null);
+    const inputRef = useRef(null);
+
+    const handleFocus = () => {
+        setTimeout(() => {
+            inputRef.current?.scrollIntoView({
+                behavior: "smooth",
+                block: "center",
+            });
+            inputRef.current?.focus();
+        }, 300); // 0.3 sec delay
+    };
 
     const handleSend = async () => {
         if (!input.trim()) return;
@@ -52,73 +64,92 @@ export default function ChatBox() {
         }
     };
 
-
     // Auto-scroll
     useEffect(() => {
         chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
     }, [messages]);
 
     useEffect(() => {
-        if (isOpen) return; // stop when chat is open
-
+        let focusTimeOut = null;
+        if (isOpen) {
+            //scrolling input into view when chat is opened
+            handleFocus();
+            return;
+        }
+        // stop when chat is open
         const interval = setInterval(() => {
+            if (showHintTimeout.current) return;
             setShowHint(true);
-            const timeout = setTimeout(() => setShowHint(false), 5000); // visible for 5s
-            return () => clearTimeout(timeout);
-        }, 30000);
+            showHintTimeout.current = setTimeout(() => setShowHint(false), 5000);
+        }, 10000);
 
-        return () => clearInterval(interval);
+        return () => {
+            clearInterval(interval);
+            clearTimeout(showHintTimeout.current);
+            if (focusTimeOut) clearTimeout(focusTimeOut);
+        };
     }, [isOpen]);
 
     return (
         <div className="fixed bottom-6 right-6 z-50">
             {/* Collapsed Button */}
-            <AnimatePresence>
-                {!isOpen && showHint && (
-                    <motion.p
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 10 }}
+            {!isOpen ? (
+                <div className="flex flex-col items-end">
+                    {showHint &&
+                        <AnimatePresence>
+                            <motion.p
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -10 }}
+                                transition={{ duration: 1, repeat: Infinity, repeatType: "reverse" }}
+                                className="text-center text-sm text-gray-600 bg-gradient-to-r from-purple-200 to-blue-200 px-3 py-1 rounded-full shadow-md mb-4"
+                            >
+                                Ask anything about {name} 👇
+                            </motion.p>
+                        </AnimatePresence>
+                    }
+                    <motion.button
+                        initial={{ opacity: 0, x: 10 }}
+                        animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.4 }}
-                        className="text-center text-sm text-gray-600 bg-gradient-to-r from-purple-200 to-blue-200 px-3 py-1 rounded-full shadow-md mb-3"
+                        onClick={() => setIsOpen(true)}
+                        className="relative inline-flex items-end p-[2px] rounded-full overflow-hidden shadow-lg hover:scale-105 transition z-50"
+                        whileTap={{ scale: 0.95 }}
                     >
-                        👇 Ask me anything about {name}
-                    </motion.p>
-                )}
-            </AnimatePresence>
-            {!isOpen && (
-                <motion.button
-                    onClick={() => setIsOpen(true)}
-                    className="relative inline-flex p-[2px] rounded-full overflow-hidden shadow-lg hover:scale-105 transition z-50"
-                    whileTap={{ scale: 0.95 }}
-                >
-                    <span
-                        aria-hidden
-                        className="absolute inset-0 rounded-full animate-spin pointer-events-none"
-                        style={{
-                            background:
-                                "conic-gradient(from 0deg, #a855f7, #ec4899, #3b82f6, #a855f7)",
-                            animationDuration: "4s",
-                        }}
-                    />
-                    <div className="relative z-10 flex items-center gap-2 bg-gradient-to-r from-purple-200 to-blue-200 rounded-full px-5 py-3">
-                        <img src={ailogo} alt="SelfServe.ai" className="h-8 w-auto" />
-                    </div>
-                </motion.button>
-            )}
-
-            {/* Expanded Chat Window */}
-            <AnimatePresence>
-                {isOpen && (
+                        <span
+                            aria-hidden
+                            className="absolute inset-0 rounded-full animate-spin pointer-events-none"
+                            style={{
+                                background:
+                                    "conic-gradient(from 0deg, #a855f7, #ec4899, #3b82f6, #a855f7)",
+                                animationDuration: "4s",
+                            }}
+                        />
+                        <div className="relative z-10 flex items-center gap-2 bg-gradient-to-r from-purple-200 to-blue-200 rounded-full px-5 py-3">
+                            <img src={ailogo} alt="SelfServe.ai" className="h-8 w-auto cursor-pointer hover:scale-105 duration-200" />
+                        </div>
+                    </motion.button>
+                </div>
+            ) : <AnimatePresence onWheel={(e) => e.stopPropagation()}
+                onTouchMove={(e) => e.stopPropagation()}>
+                {(
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.8, y: 50 }}
+                        initial={{ opacity: 0, scale: 0.9, y: 50 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
-                        exit={{ opacity: 0, scale: 0.8, y: 50 }}
+                        exit={{ opacity: 0, scale: 0.9, y: 50 }}
                         transition={{ duration: 0.3, ease: "easeInOut" }}
-                        className="w-full sm:max-w-sm md:w-96 h-[70vh] sm:h-[28rem] rounded-2xl shadow-xl border bg-white overflow-hidden flex flex-col"
+                        className="
+                            w-[100vw] h-[90vh] sm:max-w-sm md:w-96 md:h-[75vh]
+                            rounded-none sm:rounded-2xl
+                            shadow-xl border bg-white
+                            fixed inset-0 sm:relative
+                            flex flex-col
+                            overflow-y-hidden
+                            child-scroll overscroll-contain
+                        "
                     >
-                        {/* Header */}
-                        <div className="bg-gradient-to-r from-purple-500 to-blue-500 text-white text-lg font-semibold px-4 py-3 flex justify-between items-center">
+                        {/* Header (always visible at top) */}
+                        <div className="bg-gradient-to-r from-purple-400 to-blue-400 text-white text-lg font-semibold px-4 py-3 flex justify-between items-center sticky top-0 z-10">
                             SelfServe.ai – Chat
                             <button
                                 onClick={() => setIsOpen(false)}
@@ -133,44 +164,78 @@ export default function ChatBox() {
                             {messages.map((msg, i) => (
                                 <div
                                     key={i}
-                                    className={`px-4 py - 2 rounded - xl text - sm max - w - [80 %] ${msg.from === "ai"
-                                        ? "bg-gray-100 text-gray-800 self-start"
-                                        : "bg-blue-500 text-white self-end"
-                                        } `}
+                                    className={`px-4 py-2 rounded-xl max-w-[80%] ${msg.from === "ai"
+                                        ? "bg-gray-100 text-gray-800 self-start border border-gray-300"
+                                        : "bg-blue-500 text-white self-end border border-blue-800"
+                                        }`}
                                 >
-                                    {msg.text}
+                                    {msg.text.split(/(https?:\/\/[^\s]+)/).map((part, j) =>
+                                        /^https?:\/\/[^\s]+$/.test(part) ? (
+                                            <a
+                                                key={j}
+                                                href={part}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="text-blue-300 hover:underline"
+                                            >
+                                                link
+                                            </a>
+                                        ) : (
+                                            <span key={j}>{part}</span>
+                                        )
+                                    )}
                                 </div>
                             ))}
                             <div ref={chatEndRef}></div>
                         </div>
 
-                        {/* Input */}
-                        <div className="flex items-center border-t px-3 py-2">
+                        {/* Input (sticks to bottom, moves above keyboard on mobile) */}
+                        <div className="flex items-center border-t px-3 py-2 bg-white sticky bottom-0">
                             <input
                                 type="text"
-                                className="flex-1 outline-none text-sm px-3 py-2 rounded-xl text-black bg-gray-100 focus:ring-2 focus:ring-blue-400 transition"
+                                className="flex-1 outline-none text-sm px-3 py-2 rounded-xl text-black bg-gray-100 focus:ring-1 focus:ring-blue-400 transition"
                                 placeholder={`Ask about ${name}...`}
                                 value={input}
+                                ref={inputRef}
+                                onFocus={handleFocus}
                                 onChange={(e) => setInput(e.target.value)}
-                                onKeyDown={(e) => e.key === "Enter" && handleSend()}
+                                onKeyDown={(e) => e.key === 'Enter' && handleSend()}
                             />
                             <button
                                 onClick={handleSend}
                                 disabled={input.length <= 5 || generating}
-                                className="ml-2 p-2 text-gray-600 hover:text-gray-900 disabled:text-gray-400 disabled:cursor-not-allowed"
+                                className="ml-3 text-gray-600 hover:text-gray-900 disabled:text-gray-400 disabled:cursor-not-allowed"
                                 aria-disabled={input.length <= 5 || generating}
                             >
-                                {input.length > 5 && !generating ? (
-                                    <span className="text-3xl text-green-500 rounded-full">➤</span>
-                                ) : (
-                                    <span className="text-3xl text-gray-400 rounded-full">➤</span>
-                                )}
+                                <motion.div
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: input.length > 5 && !generating ? 1 : 0 }}
+                                    transition={{ duration: 0.2 }}
+                                >
+                                    {input.length > 5 && !generating && (
+                                        <ArrowIcon active={input.length > 5 && !generating} />
+                                    )}
+                                </motion.div>
                             </button>
                         </div>
                     </motion.div>
-
                 )}
             </AnimatePresence>
-        </div>
+            }
+        </div >
     );
 }
+
+
+const ArrowIcon = ({ active }) => (
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className={`w-7 h-7 ${active ? "text-blue-500" : "text-gray-400"} transition duration-300 hover:text-green-600`}
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={2}
+        viewBox="0 0 24 24"
+    >
+        <path strokeLinecap="round" strokeLinejoin="round" d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z" />
+    </svg>
+);
