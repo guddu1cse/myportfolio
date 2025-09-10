@@ -32,8 +32,9 @@ import { MdArchitecture } from "react-icons/md";
 
 export const username = `guddu1cse`;
 export const name = "Guddu Kumar";
-export const organization = `MountBlue Technologies`;
-export const role = `SDE-1 at ${organization}`;
+export const PAGE_TITLE = ```${name} | Member of Technical Staff at Vymo```;
+export const organization = `Vymo`;
+export const role = `Member of Technical Staff at ${organization}`;
 export const profileLink = `https://leetcode.com/LC-${username}/`;
 export const leetcodeApi = `https://leetcode-stats-api.herokuapp.com/LC-${username}`;
 export const gitHubApi = `https://api.github.com/users/${username}/repos`;

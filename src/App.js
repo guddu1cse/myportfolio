@@ -14,22 +14,25 @@ import Dashboard from './Components/Album/Dashboard';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import ChatBox from './Components/ChatBox';
+import { PAGE_TITLE } from './config/config';
 
 function App() {
 
   // Set the favicon dynamically
   const link = document.createElement('link');
   link.rel = 'icon';
-  link.href = profileImage;
+  link.href = profileImage; // Use the profile image as favicon
   document.head.appendChild(link);
+
   useEffect(() => {
-    fetch('https://ass-server-4qwz.onrender.com/api/track-visit', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({}),
-    });
+    document.title = PAGE_TITLE; // Set the page title dynamically
+    // fetch('https://ass-server-4qwz.onrender.com/api/track-visit', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify({}),
+    // });
   }, []);
 
   return (
