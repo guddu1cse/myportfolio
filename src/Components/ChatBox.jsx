@@ -13,6 +13,7 @@ export default function ChatBox() {
         { from: "ai", text: `Hello! 👋 I’m your AI assistant. Ask me anything about ${name}.` },
     ]);
     const [input, setInput] = useState("");
+    const [sessionId, setSessionId] = useState("default-session");
     const chatEndRef = useRef(null);
     const showHintTimeout = useRef(null);
     const inputRef = useRef(null);
@@ -35,11 +36,11 @@ export default function ChatBox() {
         const userMessage = input;
         setInput("");
         setGenerating(true);
-        let url = `${aiBaseURL}/api/chat/prompt?authToken=${authToken}&prompt=${userMessage}`;
+        let url = `${aiBaseURL}/api/chat/prompt?authToken=${authToken}&sessionId=${sessionId}&prompt=${userMessage}`;
         console.log("Fetching AI response from URL:", url);
         try {
             const response = await fetch(
-                `${aiBaseURL}/api/chat/prompt?authToken=${authToken}&prompt=${userMessage}`
+                url
             );
 
             const result = await response.json();
@@ -68,6 +69,14 @@ export default function ChatBox() {
     useEffect(() => {
         chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
     }, [messages]);
+
+    //generate session id
+    useEffect(() => {
+        const generateSessionId = () => {
+            return Math.random().toString(36).slice(2, 12); // 10 chars
+        };
+        setSessionId(generateSessionId());
+    }, []);
 
     useEffect(() => {
         let focusTimeOut = null;
