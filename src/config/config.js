@@ -33,6 +33,7 @@ import { MdArchitecture } from "react-icons/md";
 export const username = `guddu1cse`;
 export const PAGE_TITLE = "Guddu Kumar | Member of Technical Staff at Vymo";
 export const name = "Guddu Kumar";
+export const PAGE_TITLE = `${name} | Member of Technical Staff at Vymo`;
 export const organization = `Vymo`;
 export const role = `Member of Technical Staff at ${organization}`;
 export const profileLink = `https://leetcode.com/LC-${username}/`;
@@ -132,7 +133,12 @@ export const experiences = [
         role: "Member of Technical Staff (MTS)",
         link: "https://www.vymo.com/",
         description:
-            "Currently contributing to project setup and gaining deep understanding of the codebase and system architecture.",
+            `• Designed, developed, and maintained multiple microservices (authentication, workflow orchestration, and internal
+business services) ensuring scalability, reliability, and seamless integration across platforms.
+• Built and optimized data workflows using Airflow, Kafka, Elasticsearch, Redis, SFTP, and Cron Jobs, resulting in
+improved system performance and reliability.
+• Collaborated on distributed system design, debugging, and deployment processes, gaining hands-on experience in
+event-driven architecture and large-scale data pipelines.`,
     },
     {
         year: 2025,
