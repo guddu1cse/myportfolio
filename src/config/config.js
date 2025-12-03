@@ -31,6 +31,7 @@ import {
 import { MdArchitecture } from "react-icons/md";
 
 export const username = `guddu1cse`;
+export const PAGE_TITLE = "Guddu Kumar | Member of Technical Staff at Vymo";
 export const name = "Guddu Kumar";
 export const PAGE_TITLE = `${name} | Member of Technical Staff at Vymo`;
 export const organization = `Vymo`;
