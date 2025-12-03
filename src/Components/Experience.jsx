@@ -71,7 +71,17 @@ const Experience = () => {
           {/* Experience Card */}
           <div className="bg-gray-800 p-6 sm:p-8 rounded-lg shadow-lg text-center w-full">
             <h3 className="font-bold text-lg sm:text-xl lg:text-2xl text-gray-100">
-              {exp.company}
+              <a 
+                href={exp.link} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="hover:text-blue-400 transition-colors duration-300 relative group"
+              >
+                {exp.company}
+                <span className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-white text-blue text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                  Visit {exp.link}
+                </span>
+              </a>
             </h3>
             <p className="text-xs sm:text-sm lg:text-base font-semibold text-gray-300">
               {exp.role}

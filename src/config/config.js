@@ -32,8 +32,9 @@ import { MdArchitecture } from "react-icons/md";
 
 export const username = `guddu1cse`;
 export const name = "Guddu Kumar";
-export const organization = `MountBlue Technologies`;
-export const role = `SDE-1 at ${organization}`;
+export const PAGE_TITLE = `${name} | Member of Technical Staff at Vymo`;
+export const organization = `Vymo`;
+export const role = `Member of Technical Staff at ${organization}`;
 export const profileLink = `https://leetcode.com/LC-${username}/`;
 export const leetcodeApi = `https://leetcode-stats-api.herokuapp.com/LC-${username}`;
 export const gitHubApi = `https://api.github.com/users/${username}/repos`;
@@ -125,18 +126,43 @@ export const certifications = [
 //list of experiences
 export const experiences = [
     {
+        year: 2025,
+        company: 'Vymo Asia',
+        duration: 'May 2025 - Present',
+        role: "Member of Technical Staff (MTS)",
+        link: "https://www.vymo.com/",
+        description:
+            `• Designed, developed, and maintained multiple microservices (authentication, workflow orchestration, and internal
+business services) ensuring scalability, reliability, and seamless integration across platforms.
+• Built and optimized data workflows using Airflow, Kafka, Elasticsearch, Redis, SFTP, and Cron Jobs, resulting in
+improved system performance and reliability.
+• Collaborated on distributed system design, debugging, and deployment processes, gaining hands-on experience in
+event-driven architecture and large-scale data pipelines.`,
+    },
+    {
+        year: 2025,
+        company: 'devx commerce',
+        duration: 'April 2025 - May 2025',
+        role: "Software Developer Engineer (SDE-1)",
+        link: "https://devxcommerce.com/",
+        description:
+            "Built and maintained Comet POS, a retail management system, using React.js, Next.js, Node.js, TypeScript, PostgreSQL, and AWS. Key features included order processing, split payments (Card, Razorpay, Cash), barcode scanning, dynamic coupons, advanced admin controls, and CMS-integrated cash handovers.",
+    },
+    {
         year: "2024",
         company: "MountBlue Technologies",
         duration: "November 2024 - Present",
         role: "Software Developer Engineer (SDE-1)",
+        link: "https://www.mountblue.io/",
         description:
-            "",
+            "Working as a Software Development Engineer, actively contributing to real-world client projects while sharpening full-stack development skills. Responsibilities include building and maintaining scalable web applications, writing clean and efficient code, and collaborating with teams in Agile environments. Gained hands-on experience with technologies such as React.js, Next.js, Node.js, Express.js, MongoDB, MySQL, SQL, and WebSocket. Continuously enhancing problem-solving abilities and adhering to best practices for high-quality software delivery.",
     },
     {
         year: "2024",
         company: "Ekloud Inc",
         duration: "February 2024 - April 2024 (3 Months)",
         role: "Backend Developer Intern",
+        link: "https://ekloudservices.com/",
         description:
             "Implemented API endpoints and data processing pipelines, enhancing the back-end functionality and ensuring data integrity for various client projects.",
     },

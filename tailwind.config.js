@@ -1,5 +1,7 @@
+import scrollbar from 'tailwind-scrollbar';
+
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
   content: ["./src/**/*.{js,jsx,ts,tsx}"], // Specify the content paths
   theme: {
     extend: {
@@ -18,6 +20,7 @@ module.exports = {
         'border-move': 'borderMove 3s linear infinite', // Custom animation for moving borders
         'slide-up': 'slideUp 1s ease-out', // Slide-up animation
         'draw-line': 'drawLine 2s ease-out forwards', // Animation for vertical line
+        'spin-slow': 'spin 4s linear infinite', // slower than default
       },
       keyframes: {
         borderMove: {
@@ -35,5 +38,5 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [scrollbar],
 };
