@@ -48,19 +48,19 @@ export const email = "guddu.javadev@gmail.com";
 export const contact = "8084166187";
 
 
-export const aboutMe = `Hello, I’m ${name}, a software engineer who graduated in 2024
-            with a strong foundation in Computer Science Engineering. I
-            completed my B.Tech at Lakshmi Narain College of Technology (LNCT)
-            in Bhopal, where I gained in-depth knowledge of Data Structures and
-            Algorithms (DSA). I excel at solving complex problems and have
-            expertise in various technologies, including React.js, Spring Boot,
-            and MySQL. I have experience in developing software applications and
-            a keen interest in leveraging my skills in real-world projects to
-            contribute to the technology industry.`;
+export const aboutMe = `Hello, I’m ${name}, a Backend Engineer with 1+ year of experience
+in building scalable and high-performance backend systems. I graduated in 2024
+with a B.Tech in Computer Science Engineering from Lakshmi Narain College of Technology (LNCT),
+Bhopal. I have a strong foundation in Data Structures and Algorithms, having solved
+800+ LeetCode problems. Currently working as a Member of Technical Staff at Vymo Asia,
+I specialize in Java, Spring Boot, REST APIs, microservices, and database optimization.
+I enjoy solving complex engineering problems and building reliable systems that
+operate at scale in real-world production environments.`;
 
-export const footerAbout = `I'm a dedicated software developer skilled in React.js, Spring Boot,
-            and Salesforce, passionate about building impactful projects and
-            solving complex problems.`;
+export const footerAbout = `Backend Engineer skilled in Java, Spring Boot, Microservices,
+MySQL, Redis, and AWS, passionate about building scalable systems and solving
+complex backend and distributed system challenges.`;
+
 
 // list of skills
 export const skills = [
@@ -127,43 +127,32 @@ export const certifications = [
 export const experiences = [
     {
         year: 2025,
-        company: 'Vymo Asia',
-        duration: 'May 2025 - Present',
-        role: "Member of Technical Staff (MTS)",
+        company: "Vymo Asia",
+        duration: "Jan 2025 - Present",
+        role: "Member of Technical Staff (Backend Engineer)",
         link: "https://www.vymo.com/",
-        description:
-            `• Designed, developed, and maintained multiple microservices (authentication, workflow orchestration, and internal
-business services) ensuring scalability, reliability, and seamless integration across platforms.
-• Built and optimized data workflows using Airflow, Kafka, Elasticsearch, Redis, SFTP, and Cron Jobs, resulting in
-improved system performance and reliability.
-• Collaborated on distributed system design, debugging, and deployment processes, gaining hands-on experience in
-event-driven architecture and large-scale data pipelines.`,
+        description: `• Designed, developed, and maintained scalable backend microservices using Java and Spring Boot for authentication, workflow orchestration, and internal business logic.
+• Built and optimized event-driven data workflows leveraging Kafka, Airflow, Redis, Elasticsearch, SFTP, and scheduled jobs, improving system reliability, throughput, and latency.
+• Contributed to distributed system design, production debugging, and performance optimization in high-availability environments.
+• Worked on product-critical features and services used by enterprise customers at scale.`,
     },
     {
-        year: 2025,
-        company: 'devx commerce',
-        duration: 'April 2025 - May 2025',
-        role: "Software Developer Engineer (SDE-1)",
-        link: "https://devxcommerce.com/",
-        description:
-            "Built and maintained Comet POS, a retail management system, using React.js, Next.js, Node.js, TypeScript, PostgreSQL, and AWS. Key features included order processing, split payments (Card, Razorpay, Cash), barcode scanning, dynamic coupons, advanced admin controls, and CMS-integrated cash handovers.",
-    },
-    {
-        year: "2024",
+        year: 2024,
         company: "MountBlue Technologies",
-        duration: "November 2024 - Present",
-        role: "Software Developer Engineer (SDE-1)",
+        duration: "Oct 2024 - Dec 2024",
+        role: "Software Development Engineer Intern (Backend)",
         link: "https://www.mountblue.io/",
-        description:
-            "Working as a Software Development Engineer, actively contributing to real-world client projects while sharpening full-stack development skills. Responsibilities include building and maintaining scalable web applications, writing clean and efficient code, and collaborating with teams in Agile environments. Gained hands-on experience with technologies such as React.js, Next.js, Node.js, Express.js, MongoDB, MySQL, SQL, and WebSocket. Continuously enhancing problem-solving abilities and adhering to best practices for high-quality software delivery.",
+        description: `• Completed intensive backend engineering training focused on Java, Spring Boot, REST API design, and microservices fundamentals.
+• Implemented backend features involving API development, database schema design, and query optimization using MySQL and PostgreSQL.
+• Strengthened foundations in data structures, OOP principles, and backend system design through hands-on assignments and code reviews.`,
     },
     {
-        year: "2024",
+        year: 2024,
         company: "Ekloud Inc",
-        duration: "February 2024 - April 2024 (3 Months)",
+        duration: "Feb 2024 - Apr 2024 (3 Months)",
         role: "Backend Developer Intern",
         link: "https://ekloudservices.com/",
-        description:
-            "Implemented API endpoints and data processing pipelines, enhancing the back-end functionality and ensuring data integrity for various client projects.",
+        description: `• Implemented REST API endpoints and backend data processing pipelines.
+• Improved backend functionality, data integrity, and reliability across multiple client-facing projects.`,
     },
 ];
